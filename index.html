@@ -70,7 +70,7 @@
                                         <figure class="px-15 py-12 bg-[#1111110D] m-5">
                                         <img src="./images/prod1.png" alt="Shoes" class=" " />
                                         </figure>
-                                        <div class="card-body items-center text-center">
+                                        <div class="card-body items-center text-center" onclick="productSelectClick(this)">
                                             <div class="rating rating-sm">
                                                 <input type="radio" name="rating-6" class="mask mask-star-2 bg-[#FFC107]" />
                                                 <input type="radio" name="rating-6" class="mask mask-star-2 bg-[#FFC107]" checked />
@@ -88,7 +88,7 @@
                                     <figure class="px-15 py-12 bg-[#1111110D] m-5">
                                     <img src="./images/prod2.png" alt="Shoes" class=" " />
                                     </figure>
-                                    <div class="card-body items-center text-center">
+                                    <div class="card-body items-center text-center" onclick="productSelectClick(this)">
                                         <div class="rating rating-sm">
                                             <input type="radio" name="rating-7" class="mask mask-star-2 bg-[#FFC107]" checked />
                                             <input type="radio" name="rating-7" class="mask mask-star-2 bg-[#FFC107]"  />
@@ -107,7 +107,7 @@
                                     <figure class="px-15 py-12 bg-[#1111110D] m-5">
                                     <img src="./images/prod3.png" alt="Shoes" class=" " />
                                     </figure>
-                                    <div class="card-body items-center text-center">
+                                    <div class="card-body items-center text-center " onclick="productSelectClick(this)">
                                         <div class="rating rating-sm">
                                             <input type="radio" name="rating-8" class="mask mask-star-2 bg-[#FFC107]" />
                                             <input type="radio" name="rating-8" class="mask mask-star-2 bg-[#FFC107]"  />
@@ -134,7 +134,7 @@
                                         <figure class="px-15 py-12 bg-[#1111110D] m-5">
                                         <img src="./images/prod4.png" alt="Shoes" class=" " />
                                         </figure>
-                                        <div class="card-body items-center text-center">
+                                        <div class="card-body items-center text-center" onclick="productSelectClick(this)">
                                             <div class="rating rating-sm">
                                                 <input type="radio" name="rating-9" class="mask mask-star-2 bg-[#FFC107]" />
                                                 <input type="radio" name="rating-9" class="mask mask-star-2 bg-[#FFC107]" checked />
@@ -152,7 +152,7 @@
                                     <figure class="px-15 py-12 bg-[#1111110D] m-5">
                                     <img src="./images/prod5.png" alt="Shoes" class=" " />
                                     </figure>
-                                    <div class="card-body items-center text-center">
+                                    <div class="card-body items-center text-center" onclick="productSelectClick(this)">
                                         <div class="rating rating-sm">
                                             <input type="radio" name="rating-5" class="mask mask-star-2 bg-[#FFC107]" />
                                             <input type="radio" name="rating-5" class="mask mask-star-2 bg-[#FFC107]"  />
@@ -171,7 +171,7 @@
                                     <figure class="px-15 py-12 bg-[#1111110D] m-5">
                                     <img src="./images/prod1.png" alt="Shoes" class=" " />
                                     </figure>
-                                    <div class="card-body items-center text-center">
+                                    <div class="card-body items-center text-center" onclick="productSelectClick(this)">
                                         <div class="rating rating-sm">
                                             <input type="radio" name="rating-4" class="mask mask-star-2 bg-[#FFC107]" />
                                             <input type="radio" name="rating-4" class="mask mask-star-2 bg-[#FFC107]"  />
@@ -195,23 +195,49 @@
                         <div class="bg-white p-6 mb-6 rounded-xl">
                             <h3 class="py-3 text-xl font-medium">Have coupon?</h3>
                             <div class="join ">
-                                <input class="input input-bordered join-item" placeholder="Coupon code"/>
-                                <button class="btn join-item rounded-r-full bg-pinkcolor text-white normal-case">Apply</button>
+                                <input class="input input-bordered join-item" placeholder="Coupon code" id="coupon_input"/>
+                                <button class="btn join-item rounded-r-full bg-pinkcolor text-white normal-case" onclick="couponApply() " id="apply-btn" disabled >Apply</button>
                             </div>
         
                         </div>
                         <div class="bg-white rounded-xl p-6">
+                            <div id="selectedProduct" class="list-none text-xl font-medium">
+                                
+                            </div>
                             <hr class="py-3">
                             <div class="pb-3">
-                                <p class="text-xl font-medium">Total price: 00.00TK </p>
-                                <p class="text-xl font-medium">Discount : 00.00 TK</p>
-                                <p class="text-xl font-medium">Total: 00.00 TK</p>
+                                <p class="text-xl font-medium">Total price: <span  id="total"> 00.00TK </span></p>
+                                <p class="text-xl font-medium">Discount : <span class="product-price" id="discount">00.00 TK</span></p>
+                                <p class="text-xl font-medium">Total: <span class="product-price" id="in-total">00.00 TK</span></p>
                             </div>
                             <hr class=" pt-3">
 
                         </div>
 
-                        <button class="btn bg-pinkcolor -mt-16 w-3/4 mx-auto ml-10 text-white normal-case">Make Purchase</button>
+                        <div class="  mx-auto ml-10">
+                            <!-- Open the modal using ID.showModal() method -->
+                            <button id="purchase-btn" class="btn bg-pinkcolor text-white normal-case w-3/4 -mt-16" onclick="my_modal_1.showModal()">Make Purchase</button>
+                            <dialog id="my_modal_1" class="modal">
+                            <form method="dialog" class="modal-box">
+                                <div class="modal-action">
+
+                                </div>
+
+                                <div class="card bg-base-100 ">
+                                    <figure class="px-10 pt-10">
+                                      <img src="./images/congo.png" alt="Shoes" class="rounded-xl" />
+                                    </figure>
+                                    <div class="card-body items-center text-center">
+                                      <h2 class="card-title text-center">Shoes!</h2>
+                                      <p class="text-center">If a dog chews shoes whose shoes does he choose?</p>
+                                      <div class="card-actions">
+                                        <button class="btn bg-pinkcolor text-white" onclick="goHome()">Go Home</button>
+                                      </div>
+                                    </div>
+                                </div>
+                            </form>
+                            </dialog>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -221,6 +247,8 @@
     <footer>
 
     </footer>
+
+    <script src="./js/shop.js"></script>
     
 </body>
 </html>
